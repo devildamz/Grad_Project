@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EyDomainsCreateDlg" widgetVar="EyDomainsCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{myBundle.CreateEyDomainsTitle}" closeOnEscape="true">
+
+            <h:form id="EyDomainsCreateForm">
+
+                <h:panelGroup id="display" rendered="#{eyDomainsController.selected != null}">
+                    <p:panelGrid columns="2" columnClasses="column">
+
+                        <p:outputLabel value="#{myBundle.CreateEyDomainsLabel_code}" for="code" />
+                        <p:inputText id="code" value="#{eyDomainsController.selected.code}" title="#{myBundle.CreateEyDomainsTitle_code}" required="true" requiredMessage="#{myBundle.CreateEyDomainsRequiredMessage_code}"/>
+
+                        <p:outputLabel value="#{myBundle.CreateEyDomainsLabel_name}" for="name" />
+                        <p:inputText id="name" value="#{eyDomainsController.selected.name}" title="#{myBundle.CreateEyDomainsTitle_name}" required="true" requiredMessage="#{myBundle.CreateEyDomainsRequiredMessage_name}" size="45" maxlength="45"/>
+
+                        <p:outputLabel value="#{myBundle.CreateEyDomainsLabel_creationDate}" for="creationDate" />
+                        <p:calendar id="creationDate" pattern="MM/dd/yyyy HH:mm:ss" value="#{eyDomainsController.selected.creationDate}" title="#{myBundle.CreateEyDomainsTitle_creationDate}" required="true" requiredMessage="#{myBundle.CreateEyDomainsRequiredMessage_creationDate}" showOn="button"/>
+
+                        <p:outputLabel value="#{myBundle.CreateEyDomainsLabel_createdBy}" for="createdBy" />
+                        <p:inputText id="createdBy" value="#{eyDomainsController.selected.createdBy}" title="#{myBundle.CreateEyDomainsTitle_createdBy}" required="true" requiredMessage="#{myBundle.CreateEyDomainsRequiredMessage_createdBy}" size="45" maxlength="45"/>
+
+                        <p:outputLabel value="#{myBundle.CreateEyDomainsLabel_value}" for="value" />
+                        <p:inputText id="value" value="#{eyDomainsController.selected.value}" title="#{myBundle.CreateEyDomainsTitle_value}" required="true" requiredMessage="#{myBundle.CreateEyDomainsRequiredMessage_value}"/>
+
+                        <p:outputLabel value="#{myBundle.CreateEyDomainsLabel_domainName}" for="domainName" />
+                        <p:inputText id="domainName" value="#{eyDomainsController.selected.domainName}" title="#{myBundle.CreateEyDomainsTitle_domainName}" size="45" maxlength="45"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{eyDomainsController.saveNew}" value="#{myBundle.Save}" update="display,:EyDomainsListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('EyDomainsCreateDialog'));">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="PF('EyDomainsCreateDialog').hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

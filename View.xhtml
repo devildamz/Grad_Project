@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EyDomainsViewDlg" widgetVar="EyDomainsViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.ViewEyDomainsTitle}" closeOnEscape="true">
+
+            <h:form id="EyDomainsViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" columnClasses="column" rendered="#{eyDomainsController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewEyDomainsLabel_id}"/>
+                        <h:outputText value="#{eyDomainsController.selected.id}" title="#{myBundle.ViewEyDomainsTitle_id}"/>
+
+                        <h:outputText value="#{myBundle.ViewEyDomainsLabel_code}"/>
+                        <h:outputText value="#{eyDomainsController.selected.code}" title="#{myBundle.ViewEyDomainsTitle_code}"/>
+
+                        <h:outputText value="#{myBundle.ViewEyDomainsLabel_name}"/>
+                        <h:outputText value="#{eyDomainsController.selected.name}" title="#{myBundle.ViewEyDomainsTitle_name}"/>
+
+                        <h:outputText value="#{myBundle.ViewEyDomainsLabel_creationDate}"/>
+                        <h:outputText value="#{eyDomainsController.selected.creationDate}" title="#{myBundle.ViewEyDomainsTitle_creationDate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewEyDomainsLabel_createdBy}"/>
+                        <h:outputText value="#{eyDomainsController.selected.createdBy}" title="#{myBundle.ViewEyDomainsTitle_createdBy}"/>
+
+                        <h:outputText value="#{myBundle.ViewEyDomainsLabel_value}"/>
+                        <h:outputText value="#{eyDomainsController.selected.value}" title="#{myBundle.ViewEyDomainsTitle_value}"/>
+
+                        <h:outputText value="#{myBundle.ViewEyDomainsLabel_domainName}"/>
+                        <h:outputText value="#{eyDomainsController.selected.domainName}" title="#{myBundle.ViewEyDomainsTitle_domainName}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="PF('EyDomainsViewDialog').hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>
